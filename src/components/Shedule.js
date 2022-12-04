@@ -12,7 +12,7 @@ function Shedule() {
   const [valueTime, onChangeTime] = useState();
   const [togel, setTogel] = useState(true);
   const [successTogel, setSuccessTogel] = useState(true);
-  const { register, handleSubmit, reset } = useForm();
+  const { reset, register, handleSubmit } = useForm();
   const [items, setItems] = useState([]);
   const [meetBtnTogel, setMeetBtnTogel] = useState(true);
 
@@ -46,11 +46,11 @@ function Shedule() {
     value.date = valueDate;
 
     if (
-      value.Name === '' ||
-      value.Email === '' ||
-      value.time === null ||
-      value.date === null ||
-      value.meetingInfo === ''
+      value?.Name === '' ||
+      value?.Email === '' ||
+      value?.time === null ||
+      value?.date === null ||
+      value?.meetingInfo === ''
     ) {
       setTogel(false);
     } else {
@@ -60,9 +60,10 @@ function Shedule() {
       localStorage.setItem('meeting', JSON.stringify(meeting));
       setSuccessTogel(false);
       setTimeout(() => setSuccessTogel(true), 2000);
-      onChangeDate();
-      onChangeTime();
       reset();
+      onChangeDate(null);
+      onChangeTime(null);
+
       const items = JSON.parse(localStorage.getItem('meeting'));
       if (items) {
         setItems(items);
