@@ -25,9 +25,11 @@ function Shedule() {
       date: '2022-12-10T18:30:00.000Z',
     };
 
-    let meeting = JSON.parse(localStorage.getItem('meeting') || '[]');
-    meeting.push(firstuser);
-    localStorage.setItem('meeting', JSON.stringify(meeting));
+    if (!localStorage.getItem('meeting')) {
+      let meeting = JSON.parse(localStorage.getItem('meeting') || '[]');
+      meeting.push(firstuser);
+      localStorage.setItem('meeting', JSON.stringify(meeting));
+    }
   }, []);
 
   useEffect(() => {
