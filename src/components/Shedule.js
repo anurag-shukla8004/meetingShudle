@@ -17,6 +17,17 @@ function Shedule() {
   const [meetBtnTogel, setMeetBtnTogel] = useState(true);
 
   useEffect(() => {
+    let firstuser = [
+      {
+        Name: 'anurag shukla',
+        Email: 'anuragshukla8004@gmail.com',
+        meetingInfo: 'hello for the command',
+        time: '23:02',
+        date: '2022-12-10T18:30:00.000Z',
+      },
+    ];
+    var meeting = JSON.parse(localStorage.getItem('meeting') || '[]');
+    meeting.push(firstuser);
     const items = JSON.parse(localStorage.getItem('meeting'));
     if (items) {
       setItems(items);
