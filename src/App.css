@@ -31,8 +31,17 @@ label {
   margin: 20px 10px;
 }
 
-.sheduleBox {
+.shedule {
   display: flex;
+  width: 80%;
+  margin: 50px 10px 10px 10px;
+  border: 1px solid #bfbfbf;
+  background-color: white;
+  box-shadow: 0px 0px 10px 10px #aaaaaa;
+}
+
+.sheduleBox {
+  display: none;
   width: 80%;
   margin: 50px 10px 10px 10px;
   border: 1px solid #bfbfbf;
@@ -100,11 +109,13 @@ textarea {
 }
 
 #confirm {
+  display: flex;
+  flex-direction: column;
   background-color: #ff0000;
   border-radius: 24px;
   color: #d30606;
   position: fixed;
-  width: 301px;
+  width: 270px;
   height: 150px;
   left: 40%;
   top: 40%;
@@ -158,6 +169,7 @@ textarea {
 }
 
 .MeetingInfoMainContainer {
+  width: 95%;
   height: 500px;
   overflow: scroll;
 }
@@ -238,8 +250,16 @@ p {
     font-weight: 600;
     color: #4a4949;
   }
-  .sheduleBox {
+  .shedule {
     display: flex;
+    width: 80%;
+    margin: 50px 10px 10px 10px;
+    border: 1px solid #bfbfbf;
+    background-color: white;
+    box-shadow: 0px 0px 10px 10px #aaaaaa;
+  }
+  .sheduleBox {
+    display: none;
     width: 80%;
     margin: 20px 10px 10px 10px;
     border: 1px solid #bfbfbf;
@@ -261,6 +281,15 @@ p {
     display: none;
     width: 90%;
     border-right: none;
+  }
+
+  .shedule {
+    display: none;
+    width: 80%;
+    margin: 50px 10px 10px 10px;
+    border: 1px solid #bfbfbf;
+    background-color: white;
+    box-shadow: 0px 0px 10px 10px #aaaaaa;
   }
   .sheduleBox {
     display: flex;
@@ -301,6 +330,14 @@ p {
 }
 
 @media screen and (max-width: 450px) {
+  .shedule {
+    display: none;
+    width: 80%;
+    margin: 50px 10px 10px 10px;
+    border: 1px solid #bfbfbf;
+    background-color: white;
+    box-shadow: 0px 0px 10px 10px #aaaaaa;
+  }
   .sheduleBox {
     display: flex;
     width: 95%;

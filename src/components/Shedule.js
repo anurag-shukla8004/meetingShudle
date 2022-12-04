@@ -21,7 +21,6 @@ function Shedule() {
     if (items) {
       setItems(items);
     }
-    console.log('this is meeting', items);
   }, []);
 
   const onSubmit = (data) => {
@@ -36,7 +35,6 @@ function Shedule() {
       value.date === null ||
       value.meetingInfo === ''
     ) {
-      console.log('fill these field are required');
       setTogel(false);
     } else {
       var meeting = JSON.parse(localStorage.getItem('meeting') || '[]');
@@ -55,11 +53,9 @@ function Shedule() {
     }
   };
   const meetBtn = () => {
-    console.log('helo for the comand');
     setMeetBtnTogel(false);
   };
   const meetBtn2 = () => {
-    console.log('helo for the comand');
     setMeetBtnTogel(true);
   };
 
@@ -96,7 +92,7 @@ function Shedule() {
           </div>
           <div className="MeetingInfoMainContainer">
             {items?.map((value, index) => (
-              <div className="Meeting_info_box">
+              <div className="Meeting_info_box" key={index}>
                 <h3>{value?.Name}</h3>
                 <h6>{value?.Email}</h6>
                 <div className="flex_body">
@@ -120,6 +116,91 @@ function Shedule() {
           className="flex-box boxsize2"
           style={{ display: !meetBtnTogel ? 'none' : 'block' }}
         >
+          <div className="header">
+            <button className="meetBtn" onClick={meetBtn}>
+              Meeting List
+            </button>
+            <h1>NEW MEETING SHEDULE</h1>
+          </div>
+          <div className="form_main_cotainer">
+            <div className="form_box">
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <label>Name</label>
+                <input type="text" {...register('Name')} placeholder="Name" />
+                <label>Email</label>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  {...register('Email')}
+                />
+                <label>Date</label>
+                <DatePicker onChange={onChangeDate} value={valueDate} />
+                <label>Time</label>
+                <TimePicker onChange={onChangeTime} value={valueTime} />
+                <label>
+                  Please share anything that will help for our meeting
+                </label>
+                <textarea
+                  type="text"
+                  placeholder="Meeting Info"
+                  {...register('meetingInfo')}
+                />
+                <input className="submitBtn" type="submit" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="shedule">
+        <div id="confirm" style={{ display: !togel ? 'flex' : 'none' }}>
+          <div className="message">If input field are empty</div>
+          <div className="message">
+            Fill are filed [Name, Email, Time, Date]
+          </div>
+          <br />
+          <button onClick={() => setTogel(true)} className="yes">
+            OK
+          </button>
+        </div>
+        <div
+          id="confirmSuccess"
+          style={{ display: !successTogel ? 'block' : 'none' }}
+        >
+          <div className="messagesuccess">Meeting Scheduled Successfully</div>
+          <br />
+        </div>
+
+        <div className="flex-box boxsize1">
+          <div className="header">
+            <button className="meetBtn" onClick={meetBtn2}>
+              Add Meeting
+            </button>
+            <h1>MEETING LIST</h1>
+          </div>
+          <div className="MeetingInfoMainContainer">
+            {items?.map((value, index) => (
+              <div className="Meeting_info_box" key={index}>
+                <h3>{value?.Name}</h3>
+                <h6>{value?.Email}</h6>
+                <div className="flex_body">
+                  <AiFillClockCircle />
+                  <h2>{value?.time} meeing Timing</h2>
+                </div>
+                <div className="flex_body">
+                  <SlCalender />
+                  <time>{format(parseISO(value?.date), 'LLLL	d, yyyy')}</time>
+                </div>
+                <div className="flex_body">
+                  <FaGlobeAfrica />
+                  <p>Indian Standerd Time</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex-box boxsize2">
           <div className="header">
             <button className="meetBtn" onClick={meetBtn}>
               Meeting List
