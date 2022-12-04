@@ -13,7 +13,6 @@ function Shedule() {
   const [togel, setTogel] = useState(true);
   const [successTogel, setSuccessTogel] = useState(true);
   const { register, handleSubmit, reset } = useForm();
-  const [value, onChange] = useState(['10:00', '11:00']);
   const [items, setItems] = useState([]);
   const [meetBtnTogel, setMeetBtnTogel] = useState(true);
 
@@ -31,11 +30,11 @@ function Shedule() {
     value.date = valueDate;
 
     if (
-      value.Name == '' ||
-      value.Email == '' ||
-      value.time == null ||
-      value.date == null ||
-      value.meetingInfo == ''
+      value.Name === '' ||
+      value.Email === '' ||
+      value.time === null ||
+      value.date === null ||
+      value.meetingInfo === ''
     ) {
       console.log('fill these field are required');
       setTogel(false);
